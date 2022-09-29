@@ -1,0 +1,57 @@
+
+
+#****************************************载入库
+library(survival)
+library(survminer)
+library(dplyr)
+library(Hmisc)
+library(Matrix)
+library(glmnet)
+library(ggplot2)
+library(grid)
+library(lattice)
+library(Formula)
+library(rms)
+library(generalhoslem)
+
+#****************************************CF
+data_train<- read.csv("E:/model/Clinical/CF_train.csv")
+data_test<- read.csv("E:/model/Clinical/CF_test.csv")
+
+#******************************************RF
+RF_train<- read.csv("E:/model/radiomicScore/radiomic_train.csv") 
+RF_test<- read.csv("E:/model/radiomicScore/radiomic_score_predicted.csv") 
+
+#******************************************DF
+DF_train<- read.csv("E:/model/deepScore/deep_train.csv") 
+DF_test<- read.csv("E:/model/deepScore/deep_score_predicted.csv") 
+
+age_train<-data_train$age
+PL_train<-data_train$PL
+PFS_train<-data_train$PFS
+N_train<-data_train$N
+
+age_test<-data_test$age
+PL_test<-data_test$PL
+PFS_test<-data_test$PFS
+N_test<-data_test$N
+
+RFP_train<-RF_train$score
+RFP_test<-RF_test$score
+DFP_train<-DF_train$score
+DFP_test<-DF_test$score
+
+#**************************************** model
+cox_all<-coxph(Surv(PFS_train, PL_train)~age_train+N_train+RFP_train+DFP_train)
+
+#Train
+pred_tr <- predict(cox_all)  
+nomogram_score_train <- exp(pred_tr)/(exp(pred_tr)+1)
+
+
+# New data test
+test_x<-data.frame(Surv=Surv(PFS_test, PL_test), age_train=age_test, N_train=N_test, RFP_train=RFP_test, DFP_train=DFP_test)
+pred_te<- predict(cox_all,newdata = test_x)
+nomogram_score_test <- exp(pred_te)/(exp(pred_te)+1)
+
+
