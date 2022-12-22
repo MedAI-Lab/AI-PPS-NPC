@@ -12,7 +12,7 @@ Four testing cases are provided for the analysis.
   * --- Pre-processed T1-weighted (T1WI), T2-weighted (T2WI), and contrast-enhanced T1-weighted fat-suppressed (CE-T1WI-FS) images are provided, with the suffix "_img.nii". In addition, the segmentation results for the tumor volume of interest are also shared, with the suffix "_mask.nii".
 
 * RadiomicScore
-  * --- The folder named "RadiomicFeatureExtraction" lists the parameters and method of radiomic feature extraction. See https://pyradiomics.readthedocs.io/en/latest/usage.html for detailed details
+  * --- The folder named "RadiomicFeatureExtraction" lists the parameters and method of radiomic feature extraction. See https://pyradiomics.readthedocs.io/en/latest/usage.html for detailed details.
   * --- The folder named "RadiomicScoreCalculate" provides the constructed optimal radiomic model (model.pickle) and the corresponding details (normalization_train_info.csv, radiomic_feature_select_info.csv). The reader can use the significant radiomic features of the testing data (test_radiomic_data.csv), combined with the "radiomicScore_demo.py", to calculate the radiomic score of each case. 
 
 * DeepScore
