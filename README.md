@@ -20,4 +20,4 @@ Four testing cases are provided for the analysis.
   * --- The folder named "DeepScoreCalculate" provides the constructed optimal deep learning model (model.pickle) and the corresponding details (normalization_train_info.csv, deep_feature_select_info.csv). The reader can use the significant deep features of the testing data (test_deep_data.csv), combined with the "deepScore_demo.py", to calculate the deep score of each case.
 
 * Clinical&deep Score
-  * --- The reader can view different sources of parameters required by the clinical-deep model in "Clinical&deepScore_demo.py". The final prediction probability can be visualized by nonogram (score_calculate_nomogram.tif).
+  * --- The reader can view different sources of parameters required by the clinical-deep model in "Clinical&deepScore_demo.py". The final prediction probability can be visualized by a nonogram (score_calculate_nomogram.tif).
