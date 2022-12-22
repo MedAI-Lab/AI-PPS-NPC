@@ -3,5 +3,6 @@ A prognostic predictive system based on clinical and deep-learning in patients w
 
 
 # Usage
- Clinical_information
+Four testing cases were provided for the analysis. 
+@ Clinical_information
 
